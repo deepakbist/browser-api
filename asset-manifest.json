@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/deepakbist/deepakbist.github.io/static/js/main.67583682.js",
-    "static/js/787.696dcdf1.chunk.js": "/deepakbist/deepakbist.github.io/static/js/787.696dcdf1.chunk.js",
-    "index.html": "/deepakbist/deepakbist.github.io/index.html",
-    "main.67583682.js.map": "/deepakbist/deepakbist.github.io/static/js/main.67583682.js.map",
-    "787.696dcdf1.chunk.js.map": "/deepakbist/deepakbist.github.io/static/js/787.696dcdf1.chunk.js.map"
+    "main.js": "/deepakbist/deepakbist.github.io/browser-api/static/js/main.f28890cc.js",
+    "static/js/787.696dcdf1.chunk.js": "/deepakbist/deepakbist.github.io/browser-api/static/js/787.696dcdf1.chunk.js",
+    "index.html": "/deepakbist/deepakbist.github.io/browser-api/index.html",
+    "main.f28890cc.js.map": "/deepakbist/deepakbist.github.io/browser-api/static/js/main.f28890cc.js.map",
+    "787.696dcdf1.chunk.js.map": "/deepakbist/deepakbist.github.io/browser-api/static/js/787.696dcdf1.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.67583682.js"
+    "static/js/main.f28890cc.js"
   ]
 }
