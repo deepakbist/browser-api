@@ -4,7 +4,7 @@ import ContactPicker from "./components/contact-api";
 
 const route = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/contact-api" element={<ContactPicker />} />
