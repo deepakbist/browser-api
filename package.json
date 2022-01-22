@@ -2,7 +2,7 @@
   "name": "browser-api",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/deepakbist/deepakbist.github.io",
+  "homepage": "https://deepakbist.github.io/browser-api",
   "dependencies": {
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
