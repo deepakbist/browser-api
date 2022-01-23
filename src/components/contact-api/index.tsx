@@ -1,4 +1,16 @@
-import { Button, Typography, Box, Stack } from "@mui/material";
+import {
+  Button,
+  Typography,
+  Box,
+  Stack,
+  TableContainer,
+  Paper,
+  Table,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+} from "@mui/material";
 import { useEffect, useState } from "react";
 
 const ContactPicker = () => {
@@ -17,7 +29,7 @@ const ContactPicker = () => {
 
   const handleClick = async () => {
     setErrorInGettingContact(false);
-    const props = ["name", "tel", "icon"];
+    const props = ["name", "email", "tel", "address", "icon"];
     const opts = { multiple: true };
     try {
       // @ts-ignore navigator contacts error
@@ -50,17 +62,40 @@ const ContactPicker = () => {
       </Button>
 
       {contacts && contacts.length > 0 && (
-        <Box sx={{ mt: 3 }}>
-          <Typography>Selected Contacts: </Typography>
-          {contacts.map((contact) => (
-            <Stack sx={{ mt: 3 }} direction="row">
-              {contact?.name && <Typography>Name: {contact.name} </Typography>}
-              {contact?.tel && (
-                <Typography sx={{ ml: 2 }}>Tel: {contact.tel}</Typography>
-              )}
-            </Stack>
-          ))}
-        </Box>
+        <TableContainer component={Paper} sx={{ mt: 3 }}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Name</TableCell>
+                <TableCell>Telephone</TableCell>
+                <TableCell>Email</TableCell>
+                <TableCell>Address</TableCell>
+                <TableCell>icon</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {contacts.map((contact, i) => (
+                <TableRow key={i}>
+                  <TableCell>
+                    {contact.name ? contact.name.join(", ") : ""}
+                  </TableCell>
+                  <TableCell>
+                    {contact.tel ? contact.tel.join(", ") : ""}
+                  </TableCell>
+                  <TableCell>
+                    {contact.email ? contact.email.join(", ") : ""}
+                  </TableCell>
+                  <TableCell>
+                    {contact.address ? contact.address.join(", ") : ""}
+                  </TableCell>
+                  <TableCell>
+                    {contact.icon ? contact.icon.join(", ") : ""}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
       )}
 
       {errorInGettingContact && (
