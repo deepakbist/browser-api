@@ -1,19 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import CssBaseline from "@mui/material/CssBaseline";
-import { ThemeProvider } from "@mui/material/styles";
-import Routes from "./routes";
 import reportWebVitals from "./reportWebVitals";
-import theme from "./theme";
+import AppRoot from "./AppRoot";
 
-ReactDOM.render(
-  <ThemeProvider theme={theme}>
-    {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-    <CssBaseline />
-    <Routes />
-  </ThemeProvider>,
-  document.getElementById("root")
-);
+ReactDOM.render(<AppRoot />, document.getElementById("root"));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
