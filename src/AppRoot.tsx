@@ -7,13 +7,15 @@ import { ColorModeContext } from "./theme/color-mode-context";
 export default function AppRoot() {
   // extracting system theme
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
-  const defaultMode =
-    prefersDarkMode || localStorage.getItem("theme") === DARK ? DARK : LIGHT;
-  const [mode, setMode] = useState<typeof DARK | typeof LIGHT>(defaultMode);
+  let defaultMode: typeof DARK | typeof LIGHT;
+  if (prefersDarkMode) {
+    defaultMode = DARK;
+  } else {
+    if (localStorage.getItem("theme") === DARK) defaultMode = DARK;
+    else defaultMode = LIGHT;
+  }
 
-  useEffect(() => {
-    setMode(prefersDarkMode ? DARK : LIGHT);
-  }, [prefersDarkMode]);
+  const [mode, setMode] = useState<typeof DARK | typeof LIGHT>(defaultMode);
 
   const colorMode = useMemo(
     () => ({
