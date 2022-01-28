@@ -10,6 +10,10 @@ import {
   TableRow,
   TableCell,
   TableBody,
+  Alert,
+  Link,
+  Container,
+  AlertTitle,
 } from "@mui/material";
 import { useEffect, useState } from "react";
 
@@ -45,15 +49,33 @@ const ContactPicker = () => {
 
   if (!isContactApiSupported) {
     return (
-      <Box>
-        <Typography variant="h5" sx={{ mt: 3 }}>
-          Sorry contact picker is not supported on your device
-        </Typography>
-      </Box>
+      <Container>
+        <Stack direction="column">
+          <Alert severity="error" sx={{ mt: 4 }}>
+            <AlertTitle>Error</AlertTitle>
+            Sorry contact picker is not supported on your browser{" "}
+          </Alert>
+          <Typography sx={{ mt: 2 }}>
+            You can read more about contact picker api{" "}
+            <Link href="https://developer.mozilla.org/en-US/docs/Web/API/Contact_Picker_API">
+              here
+            </Link>
+          </Typography>
+        </Stack>
+      </Container>
     );
   }
   return (
     <Box sx={{ p: 4 }}>
+      <Typography
+        align="center"
+        sx={{ mt: 4 }}
+        variant="h4"
+        component="h1"
+        gutterBottom
+      >
+        Contact Picker API
+      </Typography>
       <Typography variant="body1" sx={{ fontWeight: 700 }}>
         Click on the button to select contact details
       </Typography>
