@@ -21,9 +21,5 @@ export const DarkTheme = createTheme({
   },
 });
 
-export interface ThemeType {
-  theme: "light" | "dark";
-}
-
 export const DARK = "dark";
 export const LIGHT = "light";

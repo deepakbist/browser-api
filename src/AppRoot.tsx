@@ -1,6 +1,6 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { ThemeProvider, CssBaseline, useMediaQuery } from "@mui/material";
-import { LightTheme, DarkTheme, ThemeType, DARK, LIGHT } from "./theme/theme";
+import { LightTheme, DarkTheme, DARK, LIGHT } from "./theme/theme";
 import Routes from "./routes";
 import { ColorModeContext } from "./theme/color-mode-context";
 
@@ -9,15 +9,18 @@ export default function AppRoot() {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
   const defaultMode =
     prefersDarkMode || localStorage.getItem("theme") === DARK ? DARK : LIGHT;
-  const [mode, setMode] = useState<typeof DARK | typeof LIGHT>(
-    prefersDarkMode ? DARK : LIGHT
-  );
+  const [mode, setMode] = useState<typeof DARK | typeof LIGHT>(defaultMode);
+
+  useEffect(() => {
+    setMode(prefersDarkMode ? DARK : LIGHT);
+  }, [prefersDarkMode]);
 
   const colorMode = useMemo(
     () => ({
       toggleColorMode: () => {
         setMode((prevMode) => {
           const mode = prevMode === LIGHT ? DARK : LIGHT;
+          localStorage.setItem("theme", mode);
           return mode;
         });
       },
