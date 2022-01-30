@@ -13,8 +13,7 @@ import {
 
 const GeoLocationAPI = () => {
   const isSupported = "geolocation" in navigator;
-  const [locations, setLocations] =
-    useState<GeolocationPosition[] | null>(null);
+  const [locations, setLocations] = useState<GeolocationPosition[]>([]);
   const [error, setError] = useState<string>("");
   const [watchId, setWatchId] = useState<number | null>(null);
 
@@ -22,12 +21,12 @@ const GeoLocationAPI = () => {
     await navigator.geolocation.getCurrentPosition(handleSuccess, handleError);
   };
 
-  const handleSuccess = (location: any) => {
-    const newLocation = locations ? locations.concat(location) : [location];
-    setLocations(newLocation);
+  const handleSuccess = (location: GeolocationPosition) => {
+    setLocations((prevLocation) => prevLocation.concat(location));
   };
 
   const handleError = () => {
+    setLocations([]);
     setError("Error in retrieving location");
   };
 
@@ -36,9 +35,10 @@ const GeoLocationAPI = () => {
     setWatchId(watchId);
   };
 
-  const clearWatchId = async () => {
+  const resetLocation = async () => {
     if (watchId) await navigator.geolocation.clearWatch(watchId);
     setWatchId(null);
+    setLocations([]);
   };
 
   if (!isSupported)
@@ -76,7 +76,7 @@ const GeoLocationAPI = () => {
           Click on the button to find your current location
         </Typography>
         {watchId ? (
-          <Button onClick={clearWatchId} variant="contained">
+          <Button onClick={resetLocation} variant="contained">
             Stop watching
           </Button>
         ) : (
@@ -96,9 +96,10 @@ const GeoLocationAPI = () => {
         )}
       </Box>
       {locations &&
+        locations.length > 0 &&
         locations.map((location, key) => {
           return (
-            <Box sx={{ mt: 4 }}>
+            <Box sx={{ mt: 8 }}>
               <Divider sx={{ mt: 4 }} />
               <Typography>
                 {" "}
@@ -110,17 +111,15 @@ const GeoLocationAPI = () => {
                   location.timestamp
                 ).toLocaleString()}`}
               </Typography>
-              <Button
-                onClick={() => {
-                  setLocations(null);
-                  clearWatchId();
-                }}
-              >
-                clear
-              </Button>
             </Box>
           );
         })}
+      {locations && locations.length > 0 && (
+        <>
+          <Divider sx={{ mt: 4 }} />
+          <Button onClick={resetLocation}>clear</Button>
+        </>
+      )}
       {error && (
         <Stack direction="column">
           <Alert severity="error" sx={{ mt: 4 }}>
