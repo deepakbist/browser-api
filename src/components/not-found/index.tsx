@@ -1,10 +1,10 @@
-import { Container, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 const NotFound = () => {
   return (
-    <Container>
+    <Box>
       <Typography>Not Found</Typography>
-    </Container>
+    </Box>
   );
 };
 

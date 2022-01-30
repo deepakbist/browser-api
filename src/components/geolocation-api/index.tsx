@@ -18,6 +18,7 @@ const GeoLocationAPI = () => {
   const [watchId, setWatchId] = useState<number | null>(null);
 
   const handleClick = async () => {
+    await resetLocation();
     await navigator.geolocation.getCurrentPosition(handleSuccess, handleError);
   };
 
@@ -31,6 +32,7 @@ const GeoLocationAPI = () => {
   };
 
   const handleLocationWatch = async () => {
+    await resetLocation();
     const watchId = await navigator.geolocation.watchPosition(handleSuccess);
     setWatchId(watchId);
   };
