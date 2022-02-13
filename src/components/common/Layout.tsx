@@ -6,7 +6,7 @@ const ComponentLayout = ({ name, mdnLink, children }: any) => {
       <Typography
         align="center"
         sx={{ mt: 4 }}
-        variant="h4"
+        variant="h5"
         component="h1"
         gutterBottom
       >
