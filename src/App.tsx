@@ -1,16 +1,14 @@
+import { createElement } from "react"
 import {
-  Container,
   Typography,
   Box,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
-  IconButton,
-} from "@mui/material";
-import { Link } from "react-router-dom";
-import CallIcon from "@mui/icons-material/Call";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
+} from "@mui/material"
+import { Link } from "react-router-dom"
+import { componentMapper } from "./componentMapper"
 
 function App() {
   return (
@@ -22,25 +20,17 @@ function App() {
         Web API's
       </Typography>
       <List>
-        <ListItem>
-          <ListItemIcon>
-            <CallIcon />
-          </ListItemIcon>
-          <ListItemText>
-            <Link to="contact-api">Contact API</Link>
-          </ListItemText>
-        </ListItem>
-        <ListItem>
-          <ListItemIcon>
-            <LocationOnIcon />
-          </ListItemIcon>
-          <ListItemText>
-            <Link to="geolocation-api">Geolocation API</Link>
-          </ListItemText>
-        </ListItem>
+        {componentMapper.map((component) => (
+          <ListItem key={component.name}>
+            <ListItemIcon>{createElement(component.icon)}</ListItemIcon>
+            <ListItemText>
+              <Link to={component.url}>{component.name}</Link>
+            </ListItemText>
+          </ListItem>
+        ))}
       </List>
     </Box>
-  );
+  )
 }
 
-export default App;
+export default App

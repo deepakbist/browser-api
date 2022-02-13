@@ -1,17 +1,17 @@
-import { useContext } from "react";
-import { Container, Box, IconButton, Divider, Stack } from "@mui/material";
-import { ColorModeContext } from "./theme/color-mode-context";
-import { useTheme } from "@mui/material/styles";
-import Brightness4Icon from "@mui/icons-material/Brightness4";
-import Brightness7Icon from "@mui/icons-material/Brightness7";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import { Outlet, useNavigate, useLocation } from "react-router-dom";
+import { useContext } from "react"
+import { Container, Box, IconButton, Divider, Stack } from "@mui/material"
+import { ColorModeContext } from "./theme/color-mode-context"
+import { useTheme } from "@mui/material/styles"
+import Brightness4Icon from "@mui/icons-material/Brightness4"
+import Brightness7Icon from "@mui/icons-material/Brightness7"
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos"
+import { Outlet, useNavigate, useLocation } from "react-router-dom"
 
 const Layout = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const theme = useTheme();
-  const colorMode = useContext(ColorModeContext);
+  const navigate = useNavigate()
+  const location = useLocation()
+  const theme = useTheme()
+  const colorMode = useContext(ColorModeContext)
   return (
     <Container maxWidth="md">
       <Stack direction="row">
@@ -59,7 +59,7 @@ const Layout = () => {
       <Divider />
       <Outlet />
     </Container>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout
